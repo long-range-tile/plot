@@ -17,7 +17,7 @@ def plot(gps_txt):
             marker = staticmaps.Marker(latlng, size=5)
             context.add_object(marker)
 
-    image = context.render_cairo(1000, 1000)
+    image = context.render_cairo(1600, 900)
     image.write_to_png("out.png")
 
 if __name__ == '__main__':
