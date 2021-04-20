@@ -61,7 +61,7 @@ def plot(gps_txt, bt_txt, out_png):
             device_long = (last['longitude'] + current['longitude']) / 2.0
             lat_dist = abs(current['latitude'] - last['latitude'])
             long_dist = abs(current['longitude'] - last['longitude'])
-            radius = lat_dist + long_dist
+            radius = (lat_dist + long_dist) / 2.0
             multiplier = 100
 
             latlng = staticmaps.create_latlng(device_lat, device_long)
