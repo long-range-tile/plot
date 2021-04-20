@@ -10,7 +10,7 @@ def timestamp_to_datetime_bt(ts):
 def timestamp_to_datetime_gps(ts):
     return datetime.datetime.fromtimestamp(ts / 1000.0)
 
-def plot(gps_txt):
+def plot(gps_txt, bt_txt, out_png):
     context = staticmaps.Context()
     context.set_tile_provider(staticmaps.tile_provider_OSM)
 
@@ -34,7 +34,7 @@ def plot(gps_txt):
             })
 
     i = 0
-    with open('bt-2.txt', 'r') as f:
+    with open(bt_txt, 'r') as f:
         for line in f.readlines():
             i += 1
             print('progress:', i)
@@ -70,7 +70,8 @@ def plot(gps_txt):
 
 
     image = context.render_cairo(1600, 900)
-    image.write_to_png("out.png")
+    image.write_to_png(out_png)
 
 if __name__ == '__main__':
-    plot('gps.txt')
+    plot('gps-1.txt', 'bt-1.txt', 'out-1.png')
+    plot('gps-2.txt', 'bt-2.txt', 'out-2.png')
